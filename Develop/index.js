@@ -11,12 +11,12 @@ inquirer
     {
       type: 'input',
       message: 'What is the title?',
-      name: '# Title'
+      name: 'title'
     },
     {
         type: 'input',
         message: 'How users can get start this app?',
-        name: '## Getting started',
+        name: 'gettingStarted',
         validate: function (answer) {
             if (answer.length < 20) {
                 return console.log("The answer must contain more than 20 characters.");
@@ -27,7 +27,7 @@ inquirer
       {
         type: 'input',
         message: 'screenshot',
-        name: '## Screenshot',
+        name: 'screenshot',
         default: '![alt text]',
         validate: function (answer) {
             if (answer.length < 5) {
@@ -40,33 +40,33 @@ inquirer
     {
         type: 'input',
         message: 'What is the description? Must answer: What was your motivation? Why did you build this project? What problem does it solve? What did you learn?',
-        name: '## Description'
+        name: 'description'
       },
       {
         type: 'input',
         message: 'What is the functionalities? Must describe: built in features, important elements to highlight  ' ,
-        name: '## Functionalities'
+        name: 'functionalities'
       },
     {
       type: 'checkbox',
       message: 'What tools do you use? You can check it out more than one. If you used another one, you can add when the readme file will be created',
-      name: '## Tools used',
+      name: 'toolsUsed',
       choices: tools
     }, 
     {
         type: 'input',
         message: 'How users can use this app?',
-        name: '## Usage'
+        name: 'usage'
       },
       {
         type: 'input',
         message: 'How users can collaborate with this app? Refer Repository URL',
-        name: '## How to Contribute'
+        name: 'contribute'
       },
       {
         type: 'input',
         message: 'List your collaborators, if any, with links to their GitHub profiles. If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section. If you followed tutorials, include links to those here as well.',
-        name: '## Credits'
+        name: 'credits'
       },
   
     {
@@ -84,11 +84,13 @@ inquirer
 
 .then((response) => {
     const readmeContent = `
-# ${response.title}
+#${response.title}
 
 ## Getting Started
 ${response.gettingStarted}
-![Screenshot](${response.screenshot})
+
+## Screenshot
+${response.screenshot}
 
 ## Description
 ${response.description}
@@ -103,7 +105,7 @@ ${response.toolsUsed}
 ${response.usage}
 
 ## How to Contribute
-${response.contribution}
+${response.contribute}
 
 ## Credits
 ${response.credits}
