@@ -9,11 +9,9 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const emailValidator = require('email-validator');
 const markdown = require('./generateMarkdown');
-////let yourLicense = ${response.license}
 
 // TODO: Create an array of questions for user input
 const tools = ['CSS Library', 'Google Font', 'Third Party API', 'Web Server API', 'Jquery', 'DayJS', 'Node.js Module', 'Others' ];
-
 const licenses = ['GNU General Public License v2.0', 'MIT', 'Mozilla Public License 2.0'
 ,'GNU General Public License v3.0','Unlicense', 'The Artistic License 2.0', 'IBM Public License Version 1.0']
 
@@ -98,12 +96,11 @@ inquirer
       type: 'input',
       message: 'If you want to specific the used tolls, provide the details. Otherwise, press enter to continue',
       name: 'toolsDescription',
-      choices: toolsDesc
     },
     {
       type: 'list',
       message: 'License used',
-      name: 'licenses',
+      name: 'license',
       choices:licenses,
       validate: function (answer) {
         if (answer.length === 0) {
@@ -182,8 +179,14 @@ inquirer
 
 
 .then((response) => {
-  const markLicense = generateMarkdown(response.licenses)
-    const readmeContent = `
+  let yourLicense = `${response.license}`
+  const markLicense = generateMarkdown(yourLicense)
+  console.log(yourLicense, "your license")
+  
+  
+  const readmeContent = `
+${markLicense}
+
 # ${response.title}
 
 ## Description
@@ -219,7 +222,7 @@ ${response.toolsUsed}
 ${response.toolsDesc}
 
 ## License
-(${markLicense})
+${markLicense}
 
 ## Test
 ${response.test}
@@ -228,7 +231,7 @@ ${response.test}
 Users can collaborate with this project at ${response.repoUrl}.
 
 ## Questions 
- [Contact Me](${response.email}). Or, through my GitHub profile ${response.gitHubUserName}, available at https://github.com/${response.gitHubUserName}.
+ Email: [gabrielparada05@gmail.com](mailto:${response.email}). Or, through my GitHub profile ${response.gitHubUserName}, available at https://github.com/${response.gitHubUserName}.
 
 
 ## Credits
