@@ -95,6 +95,12 @@ inquirer
     }
     },
     {
+      type: 'input',
+      message: 'If you want to specific the used tolls, provide the details. Otherwise, press enter to continue',
+      name: 'toolsDescription',
+      choices: toolsDesc
+    },
+    {
       type: 'list',
       message: 'License used',
       name: 'licenses',
@@ -132,7 +138,7 @@ inquirer
 
       {
         type: 'input',
-        message: 'Enter your GitHub username', //put the link inside answer
+        message: 'Enter your GitHub username', 
         name: 'gitHubUserName',
         validate: function (answer) {
             if (answer.length < 2) {
@@ -210,6 +216,7 @@ ${response.functionalities}
 
 ## Tools Used
 ${response.toolsUsed}
+${response.toolsDesc}
 
 ## License
 (${markLicense})
@@ -222,7 +229,6 @@ Users can collaborate with this project at ${response.repoUrl}.
 
 ## Questions 
  [Contact Me](${response.email}). Or, through my GitHub profile ${response.gitHubUserName}, available at https://github.com/${response.gitHubUserName}.
-
 
 
 ## Credits
