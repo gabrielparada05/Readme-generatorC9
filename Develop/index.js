@@ -1,8 +1,4 @@
-
-
 function init () {
-
- 
 
 // TODO: Include packages needed for this application
 const fs = require('fs');
@@ -175,7 +171,7 @@ inquirer
   ///print the license badge and link
   let yourLicense = `${response.license}`
   const markLicense = generateMarkdown(yourLicense)
-  console.log(yourLicense, "your license")
+ 
   
   const readmeContent = `
 ${markLicense}
@@ -186,6 +182,7 @@ ${markLicense}
 ${response.description}
 
 ## Table of Contents
+
 - [Description](#description)
 - [Installation](#installation)
 - [Screenshot path](#screenshot-path)
@@ -212,7 +209,7 @@ ${response.functionalities}
 
 ## Tools Used
 ${response.toolsUsed}
-${response.toolsDesc}
+${response.toolsDescription}
 
 ## License
 ${markLicense}

@@ -60,7 +60,6 @@ function renderLicenseLink(license) {
   else {
     yourLicense = "N/A"
   }
-  console.log(yourLicense, "63")
   return yourLicense;
 };
 // info from https://gist.githubusercontent.com/scalahub/23fb5e590d36c51a07edd7193c4513ff/raw/e0ab9ca77b1711d806099bc00d10ec4086356ac5/license-badges.md
@@ -71,7 +70,6 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   const licenseBadge = renderLicenseBadge(license);
   const licenseLink = renderLicenseLink(license);
-  console.log(licenseBadge, licenseLink, "74")
   if (licenseBadge && licenseLink) {
     return `${licenseBadge}\n${licenseLink}`;
   } else {
@@ -82,7 +80,6 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  console.log(data, "84")
   return renderLicenseSection(data);
 //generateMarkdown()
 }
