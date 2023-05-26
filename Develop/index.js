@@ -231,7 +231,7 @@ Users can collaborate with this project at ${response.repoUrl}.
 ${response.credits}
 
 `;
-  ///call functio create the readme file
+  ///call function create the readme file
     writeToFile('README.md', readmeContent);
   });
 
