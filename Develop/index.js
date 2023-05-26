@@ -1,4 +1,4 @@
-const generateMarkdown = require('./generateMarkdown');
+
 
 function init () {
 
@@ -8,7 +8,7 @@ function init () {
 const fs = require('fs');
 const inquirer = require('inquirer');
 const emailValidator = require('email-validator');
-const markdown = require('./generateMarkdown');
+const generateMarkdown = require('./generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const tools = ['CSS Library', 'Google Font', 'Third Party API', 'Web Server API', 'Jquery', 'DayJS', 'Node.js Module', 'Others' ];
@@ -16,7 +16,7 @@ const licenses = ['GNU General Public License v2.0', 'MIT', 'Mozilla Public Lice
 ,'GNU General Public License v3.0','Unlicense', 'The Artistic License 2.0', 'IBM Public License Version 1.0']
 
 
-
+/// Questions 
 
 inquirer
   .prompt([
@@ -27,7 +27,7 @@ inquirer
     },
     {
       type: 'input',
-      message: 'What is the description? Must answer: motivation? problem to solve? What did you learn?',
+      message: 'What is the description? Must answer: motivation? Problem to solve? What did you learn?',
       name: 'description',
       validate: function (answer) {
           if (answer.length < 30) {
@@ -38,7 +38,7 @@ inquirer
     },
     {
         type: 'input',
-        message: 'How users can get start this app?',
+        message: 'How can users get started with this app?',
         name: 'gettingStarted',
         validate: function (answer) {
             if (answer.length < 20) {
@@ -60,7 +60,7 @@ inquirer
       },
       {
         type: 'input',
-        message: 'How users can use this app?',
+        message: 'How can users use this app?',
         name: 'usage',
         validate: function (answer) {
             if (answer.length < 20) {
@@ -71,18 +71,18 @@ inquirer
       },
       {
         type: 'input',
-        message: 'What is the functionalities? Must describe: built in features, elements to highlight' ,
+        message: 'What are the functionalities? Must describe: built-in features, and elements to highlight' ,
         name: 'functionalities',
         validate: function (answer) {
-            if (answer.length < 20) {
-                return console.log("The answer must contain more than 20 characters.");
+            if (answer.length < 10) {
+                return console.log("The answer must contain more than 10 characters.");
             }
             return true;
         }
       },
     {
       type: 'checkbox',
-      message: 'What tools do you use? You can check it out more than one',
+      message: 'What tools do you use? You can check out more than one',
       name: 'toolsUsed',
       choices: tools,
       validate: function (answer) {
@@ -94,7 +94,7 @@ inquirer
     },
     {
       type: 'input',
-      message: 'If you want to specific the used tolls, provide the details. Otherwise, press enter to continue',
+      message: 'If you want to specify the used tolls, provide the details. Otherwise, press enter to continue',
       name: 'toolsDescription',
     },
     {
@@ -104,7 +104,7 @@ inquirer
       choices:licenses,
       validate: function (answer) {
         if (answer.length === 0) {
-            return console.log("Select one!");   ///maybe use if stat to call generateMarkdown
+            return console.log("Select one!");   
         }
         return true;
     }
@@ -123,7 +123,7 @@ inquirer
 
       {
         type: 'input',
-        message: 'Enter your Repo URL', //put the link inside answer
+        message: 'Enter your Repo URL', 
         name: 'repoUrl',
         validate: function (answer) {
             if (answer.length < 5) {
@@ -169,20 +169,13 @@ inquirer
       },
   ])
 
-  
- /* .then((response) =>
-  writeToFile('README.md','response'), (err) =>
-  err ? console.error(err) : console.log('Commit logged!'));
-*/
-
-// table of contents creates by markdowAllinOne extension
-
-
+///generate response and print the readme file
 .then((response) => {
+
+  ///print the license badge and link
   let yourLicense = `${response.license}`
   const markLicense = generateMarkdown(yourLicense)
   console.log(yourLicense, "your license")
-  
   
   const readmeContent = `
 ${markLicense}
@@ -209,7 +202,7 @@ ${response.description}
 ${response.gettingStarted}
 
 ## Screenshot path
-A screenshot is available in'![alt text]'${response.screenshot}
+A screenshot is available ![alt text](${response.screenshot})
 
 ## Usage
 ${response.usage}
@@ -238,11 +231,11 @@ Users can collaborate with this project at ${response.repoUrl}.
 ${response.credits}
 
 `;
-  
+  ///call functio create the readme file
     writeToFile('README.md', readmeContent);
   });
 
-
+  //Create the readme file
   function writeToFile(file, data) {
     fs.writeFile(file, data, (err) => {
       if (err) {
@@ -254,15 +247,9 @@ ${response.credits}
   }
   
 }
-// TODO: Create a function to write README file
 
-init ();
 
-/* TODO: Create a function to initialize app
-function init() {} 
-
-// Function call to initialize app
 init();
-*/
+
 
 

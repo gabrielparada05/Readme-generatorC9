@@ -37,25 +37,25 @@ function renderLicenseLink(license) {
   console.log(license)
   let yourLicense = ''
   if(license === 'GNU General Public License v2.0') {
-    yourLicense = `![License: GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html`
+    yourLicense = `[License: GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html`
 
   } else if (license === 'GNU General Public License v3.0') {
-    yourLicense = `![License: GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0)`
+    yourLicense = `[License: GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0)`
     
   } else if (license === 'MIT') {
-    yourLicense = `![License: MIT](https://opensource.org/licenses/MIT)`
+    yourLicense = `[License: MIT](https://opensource.org/licenses/MIT)`
   } 
   else if (license === 'Mozilla Public License 2.0') {
-    yourLicense = `![License: Mozilla Public License 2.0](https://opensource.org/licenses/MPL-2.0)`
+    yourLicense = `[License: Mozilla Public License 2.0](https://opensource.org/licenses/MPL-2.0)`
   } 
   else if (license === 'The Artistic License 2.0') {
-    yourLicense = `![License: The Artistic License 2.0](https://opensource.org/licenses/Artistic-2.0)`
+    yourLicense = `[License: The Artistic License 2.0](https://opensource.org/licenses/Artistic-2.0)`
   } 
   else if (license === 'IBM Public License Version 1.0') {
-    yourLicense = `![License: IBM Public License Version 1.0](https://opensource.org/licenses/IPL-1.0)`
+    yourLicense = `[License: IBM Public License Version 1.0](https://opensource.org/licenses/IPL-1.0)`
   }
   else if (license === 'Unlicense') {
-    yourLicense = `![License: Unlicense](http://unlicense.org/)`
+    yourLicense = `[License: Unlicense](http://unlicense.org/)`
   } 
   else {
     yourLicense = "N/A"
